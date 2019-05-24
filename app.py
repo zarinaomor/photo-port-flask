@@ -1,4 +1,4 @@
-from flask import Flask, g, jsonify
+from flask import Flask
 from flask_cors import CORS
 import models
 
