@@ -25,6 +25,10 @@ def after_request(response):
 def index():
     return jsonify({"data" : "i'm data"})
 
+@app.route('/users')
+def asdasd():
+    return jsonify({"asdasd" : "i'm asdasd"})
+
 if __name__ == '__main__':
     models.initialize()
     app.run(debug=config.DEBUG, port=config.PORT)
