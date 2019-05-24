@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/rhidalgo/sei-class-work/sei-projects/project-4-flask/photo-port-flask/.env"
+VIRTUAL_ENV="/Users/Hrak/sei-june-bugs/project4/photo-port-flask/.env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

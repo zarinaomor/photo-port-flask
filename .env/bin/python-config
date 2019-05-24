@@ -1,4 +1,4 @@
-#!/Users/rhidalgo/sei-class-work/sei-projects/project-4-flask/photo-port-flask/.env/bin/python
+#!/Users/Hrak/sei-june-bugs/project4/photo-port-flask/.env/bin/python
 
 import sys
 import getopt

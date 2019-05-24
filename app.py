@@ -1,12 +1,13 @@
-from flask import Flask, g
+from flask import Flask, g, jsonify
 from flask_cors import CORS
+import models
 
 import config
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
 
-app.register_blueprint(photos_api, url_prefix='/api/v1')
+# app.register_blueprint(photos_api, url_prefix='/api/v1')
 
 @app.before_request
 def before_request():
