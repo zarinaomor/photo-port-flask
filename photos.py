@@ -110,7 +110,7 @@ class Photo(Resource):
 
         super().__init__()
 
-    @marshal_with(phot_fields)
+    @marshal_with(photo_fields)
     def get(self, id):
 
         try:

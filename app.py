@@ -1,11 +1,16 @@
-from flask import Flask,g, jsonify,render_template
+from flask import Flask, g, jsonify,render_template
+from flask_login import LoginManager
+login_manager = LoginManager()
 from flask_cors import CORS
 import models
-
+from resources.photos import photos_api
+from resources.users import users_api
 import config
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
+
+login_manager.init_app(app)
 
 # app.register_blueprint(photos_api, url_prefix='/api/v1')
 
