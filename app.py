@@ -12,6 +12,12 @@ app.secret_key = config.SECRET_KEY
 
 login_manager.init_app(app)
 
+
+# @login_manager.user_loader
+# def load_user(userid)
+#     try:
+#         return models.User.get 
+
 # app.register_blueprint(photos_api, url_prefix='/api/v1')
 
 @app.before_request
