@@ -27,7 +27,7 @@ def index():
 
 @app.route('/users')
 def asdasd():
-    return jsonify({"asdasd" : "i'm asdasd"})
+    return jsonify({"asdasd" : "i'm data"})
 
 if __name__ == '__main__':
     models.initialize()
