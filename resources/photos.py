@@ -73,7 +73,7 @@ class Photo(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         
-         self.reqparse.add_argument(
+        self.reqparse.add_argument(
             'title',
             required=False,
             help='No photo title provided',
