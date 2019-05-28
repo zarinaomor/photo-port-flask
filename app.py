@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,g, jsonify,render_template
 from flask_cors import CORS
 import models
 
@@ -23,7 +23,7 @@ def after_request(response):
 
 @app.route('/')
 def index():
-    return jsonify({"data" : "i'm data"})
+    return render_template('index.html')
 
 @app.route('/users')
 def asdasd():
