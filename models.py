@@ -8,7 +8,9 @@ DATABASE = SqliteDatabase('photos.sqlite')
 class Photo(Model):
     title = CharField()
     category = CharField()
-    
+    # created_by = ForeignKeyField(User, related_name='photo_set')
+    # created_at = DateTimeField(default=datetime.datetime.now)
+
     class Meta:
         database = DATABASE
     
