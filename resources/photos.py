@@ -73,7 +73,7 @@ class Photo(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         
-         self.reqparse.add_argument(
+        self.reqparse.add_argument(
             'title',
             required=False,
             help='No photo title provided',
@@ -110,7 +110,7 @@ class Photo(Resource):
 
         super().__init__()
 
-    @marshal_with(phot_fields)
+    @marshal_with(photo_fields)
     def get(self, id):
 
         try:
