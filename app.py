@@ -3,9 +3,10 @@ from flask_login import LoginManager
 login_manager = LoginManager()
 from flask_cors import CORS
 import models
-from resources.photos import photos_api
 from resources.users import users_api
+from resources.photos import photos_api
 import config
+
 
 app = Flask(__name__)
 app.secret_key = config.SECRET_KEY
@@ -20,9 +21,10 @@ def load_user(userid):
     except models.DoesNotExist:
         return None
 
-CORS(photos_api, origins=["http://localhost:3000"], support_credentials=True)
-CORS(users_api, origins=["http://localhost:3000"], support_credentials=True)
-app.register_blueprint(photos_api, url_prefix='/api/v1')
+# CORS(photos_api, origins=["http://localhost:3000"], support_credentials=True)
+# CORS(users_api, origins=["http://localhost:3000"], support_credentials=True)
+
+app.register_blueprint(photos_api, url_prefix='/photos')
 app.register_blueprint(users_api, url_prefix='/users')
 
 

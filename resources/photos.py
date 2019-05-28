@@ -139,7 +139,7 @@ api = Api(photos_api)
 
 api.add_resource(
     PhotoList,
-    '/photos'
+    '/add'
 )
 api.add_resource(
     Photo,
