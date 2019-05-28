@@ -12,7 +12,6 @@ class Photo(Model):
     description = CharField()
     camera = CharField()
     category = CharField()
-    
     class Meta:
         database = DATABASE
     
@@ -33,15 +32,16 @@ class Photo(Model):
 
 
 class User(UserMixin, Model):
-    username    = CharField(unique=True)
-    email       = CharField(unique=True)
-    password    = CharField()
+    username        = CharField(unique=True)
+    email           = CharField(unique=True)
+    password        = CharField()
+    verify_password = CharField()
 
     class Meta:
         database = DATABASE
     
     @classmethod
-    def create_user(cls, username,email,password,**kwargs):
+    def create_user(cls, username,email,password,verify_password,**kwargs):
         email = email.lower()
         try:
             cls.select().where(
@@ -50,6 +50,7 @@ class User(UserMixin, Model):
         except cls.DoesNotExist:
             user = cls(username = username,email=email)
             user.password = (password)
+            user.verify_password = (verify_password)
             user.save()
             return user
         else:
