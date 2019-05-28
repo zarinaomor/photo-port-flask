@@ -55,8 +55,10 @@ class PhotoList(Resource):
 
         super().__init__()
 
+
     def get(self):
         new_photos = [marshal(photo, photo_fields) for photo in models.Photo.select()]
+        print(new_photos)
 
         return new_photos
 
@@ -139,9 +141,9 @@ api = Api(photos_api)
 
 api.add_resource(
     PhotoList,
-    '/add'
+    '/'
 )
 api.add_resource(
     Photo,
-    '/photos/<int:id>'
+    '/<int:id>'
 )
