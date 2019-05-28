@@ -60,7 +60,7 @@ class UserList(Resource):
 
 
 users_api = Blueprint('resources.users', __name__)
-api = Api(users_api
+api = Api(users_api)
 api.add_resource(
     UserList,
     '/add',
