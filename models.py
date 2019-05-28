@@ -8,6 +8,10 @@ DATABASE = SqliteDatabase('photos.sqlite')
 class Photo(Model):
     title = CharField()
     category = CharField()
+    url = CharField()
+    description = CharField()
+    camera = CharField()
+    category = CharField()
     
     class Meta:
         database = DATABASE
