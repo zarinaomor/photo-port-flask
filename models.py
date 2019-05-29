@@ -37,7 +37,7 @@ class Photo(Model):
     description = CharField()
     camera = CharField()
     category = CharField()
-    created_by = ForeignKeyField(User, related_name='photo_set')
+    created_by = ForeignKeyField(User, related_name='photos')
 
     class Meta:
         database = DATABASE
