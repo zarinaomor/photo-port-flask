@@ -11,7 +11,8 @@ photo_fields = {
     'url': fields.String,
     'description': fields.String,
     'camera': fields.String,
-    'category': fields.String
+    'category': fields.String,
+    'created_by': fields.String
 }
 
 class PhotoList(Resource):
@@ -53,6 +54,13 @@ class PhotoList(Resource):
             location=['form', 'json']
         )
 
+        self.reqparse.add_argument(
+            'created_by',
+            required=False,
+            help='No photo category provided',
+            location=['form', 'json']
+        )
+
         super().__init__()
 
 
@@ -66,7 +74,7 @@ class PhotoList(Resource):
     def post(self):
         args = self.reqparse.parse_args()
         print(args, '<-----args (req.body)')
-        photo = models.Photo.create(created_by=1, **args)
+        photo = models.Photo.create(**args)
         print(photo, '<------', type(photo))
         return (photo, 201)
 
