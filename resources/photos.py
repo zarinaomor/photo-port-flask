@@ -11,7 +11,8 @@ photo_fields = {
     'url': fields.String,
     'description': fields.String,
     'camera': fields.String,
-    'category': fields.String
+    'category': fields.String,
+    'created_by': fields.String
 }
 
 class PhotoList(Resource):
@@ -48,6 +49,13 @@ class PhotoList(Resource):
 
         self.reqparse.add_argument(
             'category',
+            required=False,
+            help='No photo category provided',
+            location=['form', 'json']
+        )
+
+        self.reqparse.add_argument(
+            'created_by',
             required=False,
             help='No photo category provided',
             location=['form', 'json']
