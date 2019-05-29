@@ -71,7 +71,7 @@ class User(Resource):
             'username',
             required=True,
             help='No username provided',
-            location=['form', 'json']
+            location=['form', 'json'] 
         )
         
         self.reqparse.add_argument(
@@ -140,23 +140,35 @@ class UserLogin(Resource):
                     return make_response(
                         json.dumps({
                             'message': "incorrect password"
-                        }), 200)
+                        }), 401)
         except models.User.DoesNotExist:
             return make_response(
                 json.dumps({
                     'message': "Username does not exist"
-                }), 200)  
+                }), 400)  
+    @marshal_with(user_fields)
+    def get(self, id):
+        try:
+            user = models.User.get(models.User.id==id)
+        except models.User.DoesNotExist:
+            abort(404)
+        else:
+            return (user, 200)
 
-        # def post(self):
-        #     args = self.reqparse.parse_args()
-        #     user = models.User.get(models.User.username==args['username'])
-        #     login_user(user)
-        #     return marshal(user, user_fields), 201
-        # return make_response(
-        #     json.dumps({
-        #         'user': marshal(user, user_fields),
-        #         'message': "success",
-        #     }), 200)
+    @marshal_with(user_fields)
+    def put(self, id):
+        args = self.reqparse.parse_args()
+        query = models.User.update(**args).where(models.User.id==id)
+        query.execute()
+        print(query, "<---this is query")
+        return (models.User.get(models.User.id==id), 204)
+
+    def delete(self, id):
+        query = models.User.delete().where(models.User.id==id)
+        query.execute()
+        return {"message": "resource deleted"}
+
+       
         
 
 users_api = Blueprint('resources.users', __name__)

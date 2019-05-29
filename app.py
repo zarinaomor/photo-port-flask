@@ -46,7 +46,12 @@ def after_request(response):
 def index():
     return render_template('index.html')
  
-
+# @app.route('/logout')
+# @login_required
+# def logout():
+#     logout_user()
+#     flash("you've been logged out", "success")
+#     return redirect(url_for('index'))
 
 if __name__ == '__main__':
     models.initialize()
