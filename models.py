@@ -41,7 +41,7 @@ class User(UserMixin, Model):
         database = DATABASE
     
     @classmethod
-    def create_user(cls, username,email,password,verify_password,**kwargs):
+    def create_user(cls, username, email, password, verify_password, **kwargs):
         email = email.lower()
         try:
             cls.select().where(

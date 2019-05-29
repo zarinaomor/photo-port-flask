@@ -29,6 +29,7 @@ app.register_blueprint(photos_api, url_prefix='/photos')
 app.register_blueprint(users_api, url_prefix='/users')
 
 
+
 @app.before_request
 def before_request():
     """Connect to the database before each request"""
@@ -44,10 +45,8 @@ def after_request(response):
 @app.route('/')
 def index():
     return render_template('index.html')
+ 
 
-@app.route('/users')
-def asdasd():
-    return jsonify({"asdasd" : "i'm data"})
 
 if __name__ == '__main__':
     models.initialize()
