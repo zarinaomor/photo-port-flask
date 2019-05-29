@@ -21,8 +21,9 @@ def load_user(userid):
     except models.DoesNotExist:
         return None
 
-# CORS(photos_api, origins=["http://localhost:3000"], support_credentials=True)
-# CORS(users_api, origins=["http://localhost:3000"], support_credentials=True)
+CORS(photos_api, origins=["http://localhost:3000"], support_credentials=True)
+CORS(users_api, origins=["http://localhost:3000"], support_credentials=True)
+CORS(app, origins=["http://localhost:3000"], support_credentials=True)
 
 app.register_blueprint(photos_api, url_prefix='/photos')
 app.register_blueprint(users_api, url_prefix='/users')
