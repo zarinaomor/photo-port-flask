@@ -5,33 +5,6 @@ from flask_login import UserMixin
 
 DATABASE = SqliteDatabase('photos.sqlite')
 
-class Photo(Model):
-    title = CharField()
-    category = CharField()
-    url = CharField()
-    description = CharField()
-    camera = CharField()
-    category = CharField()
-
-    class Meta:
-        database = DATABASE
-    
-    # @classmethod
-    # def create_photo(cls, id,title,url,description,camera,category,**kwargs):
-    #     email = email.lower()
-    #     try:
-    #         cls.select().where(
-    #             (cls.email==email)
-    #         ).get()
-    #     except cls.DoesNotExist:
-    #         user = cls(username = username,email=email)
-    #         user.password = (password)
-    #         user.save()
-    #         return user
-    #     else:
-    #         return "user with that email exists"
-
-
 class User(UserMixin, Model):
     username        = CharField(unique=True)
     email           = CharField(unique=True)
@@ -57,6 +30,17 @@ class User(UserMixin, Model):
         else:
             return "user with that email exists"
 
+class Photo(Model):
+    title = CharField()
+    category = CharField()
+    url = CharField()
+    description = CharField()
+    camera = CharField()
+    category = CharField()
+    created_by = ForeignKeyField(User, related_name='photo_set')
+
+    class Meta:
+        database = DATABASE
 
 def initialize():
     DATABASE.connect() 

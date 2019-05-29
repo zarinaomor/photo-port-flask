@@ -66,7 +66,7 @@ class PhotoList(Resource):
     def post(self):
         args = self.reqparse.parse_args()
         print(args, '<-----args (req.body)')
-        photo = models.Photo.create(**args)
+        photo = models.Photo.create(created_by=1, **args)
         print(photo, '<------', type(photo))
         return (photo, 201)
 
