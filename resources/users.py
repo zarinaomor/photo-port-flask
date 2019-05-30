@@ -168,7 +168,12 @@ class UserLogin(Resource):
         query.execute()
         return {"message": "resource deleted"}
 
-       
+class UserLogout(Resource):
+    @login_required
+    def get(self):
+        logout_user()
+        print('User has been successfully logged out.')  
+        return 'User has been successfully logged out.'    
         
 
 users_api = Blueprint('resources.users', __name__)
@@ -184,4 +189,8 @@ api.add_resource(
 api.add_resource(
     UserLogin,
     '/login'
+)
+api.add_resource(
+    UserLogout,
+    '/logout'
 )
